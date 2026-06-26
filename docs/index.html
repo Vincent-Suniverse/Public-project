@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVB-76 Transmission Database</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--text:#c8c8d8;--dim:#6a6a8a;--accent:#4a9eff;--accent2:#7c4dff;--red:#ff4a6a;--green:#4aff8a;--mono:'JetBrains Mono',Consolas,'Courier New',monospace}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);min-height:100vh;line-height:1.5}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.header{background:linear-gradient(135deg,#0d0d1a,#1a0d1a);border-bottom:1px solid var(--border);padding:2rem 1.5rem;text-align:center}
+.header h1{font-size:1.5rem;color:#fff;letter-spacing:4px;margin-bottom:.5rem}
+.header .freq{color:var(--accent);font-size:1.1rem;letter-spacing:2px}
+.header .subtitle{color:var(--dim);font-size:.85rem;margin-top:.5rem}
+
+.stats-bar{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding:1rem 1.5rem;background:var(--card);border-bottom:1px solid var(--border)}
+.stat{text-align:center;padding:.5rem 1rem}
+.stat .val{font-size:1.4rem;color:#fff;font-weight:700}
+.stat .lbl{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+
+.controls{padding:1rem 1.5rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.controls input,.controls select{background:var(--card);color:var(--text);border:1px solid var(--border);padding:.5rem .75rem;border-radius:4px;font-family:var(--mono);font-size:.8rem}
+.controls input:focus,.controls select:focus{outline:none;border-color:var(--accent)}
+.controls input[type=text]{flex:1;min-width:200px}
+.controls select{min-width:120px}
+
+.timeline{padding:1rem 1.5rem;max-width:1200px;margin:0 auto}
+.day-group{margin-bottom:1.5rem}
+.day-header{font-size:.85rem;color:var(--accent);padding:.4rem 0;border-bottom:1px solid var(--border);margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
+.day-header .count{background:var(--accent);color:#000;padding:0 .4rem;border-radius:3px;font-size:.7rem;font-weight:700}
+
+.tx{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.6rem .8rem;margin-bottom:.4rem;font-size:.8rem;display:grid;grid-template-columns:60px auto;gap:.5rem;transition:border-color .15s}
+.tx:hover{border-color:var(--accent)}
+.tx .time{color:var(--dim);white-space:nowrap}
+.tx .content{display:flex;flex-wrap:wrap;gap:.4rem;align-items:baseline}
+.tx .callsign{color:var(--accent2);font-weight:600}
+.tx .cmd{color:var(--dim)}
+.tx .word{color:#fff;font-weight:700;font-size:.9rem}
+.tx .block{color:var(--green);opacity:.8}
+.tx .note{color:var(--red);font-size:.7rem;opacity:.8}
+
+.tx.double .word{color:#ffa94d}
+.tx.triple .word{color:var(--red)}
+.tx.quadruple .word{color:#ff4dff}
+.tx.anomaly{opacity:.6;font-style:italic}
+
+.empty{text-align:center;padding:3rem;color:var(--dim)}
+
+.footer{text-align:center;padding:2rem 1.5rem;color:var(--dim);font-size:.75rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer .formula{color:var(--accent);font-size:.9rem;margin-bottom:.5rem}
+
+.chart-container{padding:1rem 1.5rem;max-width:1200px;margin:0 auto}
+.chart{display:flex;align-items:flex-end;gap:2px;height:120px;padding:.5rem 0}
+.chart-bar{background:var(--accent);min-width:6px;flex:1;border-radius:2px 2px 0 0;position:relative;cursor:pointer;transition:opacity .15s}
+.chart-bar:hover{opacity:.8}
+.chart-bar .tooltip{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:#000;color:#fff;padding:2px 6px;border-radius:3px;font-size:.65rem;white-space:nowrap;z-index:5}
+.chart-bar:hover .tooltip{display:block}
+.chart-labels{display:flex;gap:2px;font-size:.55rem;color:var(--dim);padding-top:.25rem}
+.chart-labels span{flex:1;text-align:center;min-width:6px;overflow:hidden}
+
+#view-toggle{display:flex;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+#view-toggle button{background:var(--card);color:var(--dim);border:none;padding:.4rem .8rem;font-family:var(--mono);font-size:.75rem;cursor:pointer}
+#view-toggle button.active{background:var(--accent);color:#000;font-weight:700}
+
+@media(max-width:600px){
+  .tx{grid-template-columns:55px auto;font-size:.75rem}
+  .controls{flex-direction:column}
+  .controls input[type=text]{min-width:100%}
+  .header h1{font-size:1.2rem}
+  .stats-bar{gap:.5rem}
+  .stat .val{font-size:1.1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UVB-76</h1>
+  <div class="freq">4625 kHz</div>
+  <div class="subtitle">Documented Voice Transmissions &mdash; Public Database</div>
+</div>
+
+<div class="stats-bar" id="stats-bar">
+  <div class="stat"><div class="val" id="s-total">-</div><div class="lbl">Transmissions</div></div>
+  <div class="stat"><div class="val" id="s-days">-</div><div class="lbl">Active Days</div></div>
+  <div class="stat"><div class="val" id="s-words">-</div><div class="lbl">Unique Words</div></div>
+  <div class="stat"><div class="val" id="s-range">-</div><div class="lbl">Date Range</div></div>
+</div>
+
+<div class="chart-container">
+  <div class="chart" id="chart"></div>
+  <div class="chart-labels" id="chart-labels"></div>
+</div>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search words, callsigns, blocks...">
+  <select id="year-filter">
+    <option value="">All years</option>
+  </select>
+  <select id="type-filter">
+    <option value="">All types</option>
+    <option value="single">Single</option>
+    <option value="double">Double</option>
+    <option value="triple">Triple</option>
+    <option value="quadruple">Quadruple</option>
+    <option value="anomaly">Anomaly</option>
+  </select>
+  <div id="view-toggle">
+    <button class="active" data-view="timeline">Timeline</button>
+    <button data-view="table">Table</button>
+  </div>
+</div>
+
+<div class="timeline" id="content"></div>
+
+<div class="footer">
+  <div class="formula">V&#x302; = &pi;&sup4; + &pi;&sup3; + &pi;</div>
+  <div>Data: Priyom.org Archive (2020&ndash;2024) &bull; Vincent Weber @uvb76logs (Sept 2025&ndash;June 2026)</div>
+  <div style="margin-top:.5rem">
+    <a href="https://github.com/vincent-suniverse/public-project">GitHub Repository</a> &bull;
+    Raw data in <code>data/</code> directory
+  </div>
+</div>
+
+<script>
+let DATA=null;
+let currentView='timeline';
+
+async function init(){
+  try{
+    const r=await fetch('transmissions.json');
+    DATA=await r.json();
+    updateStats();
+    buildChart();
+    populateFilters();
+    render();
+  }catch(e){
+    document.getElementById('content').innerHTML='<div class="empty">Failed to load data. Make sure transmissions.json is available.</div>';
+  }
+}
+
+function updateStats(){
+  const m=DATA.meta;
+  document.getElementById('s-total').textContent=m.total_transmissions.toLocaleString();
+  const days=new Set(DATA.transmissions.map(t=>t.date)).size;
+  document.getElementById('s-days').textContent=days;
+  const words=new Set(DATA.transmissions.flatMap(t=>t.words)).size;
+  document.getElementById('s-words').textContent=words;
+  document.getElementById('s-range').textContent=
+    (m.date_range.start||'').slice(0,4)+'–'+(m.date_range.end||'').slice(0,4);
+}
+
+function buildChart(){
+  const byMonth={};
+  DATA.transmissions.forEach(t=>{
+    const m=t.date.slice(0,7);
+    byMonth[m]=(byMonth[m]||0)+1;
+  });
+  const months=Object.keys(byMonth).sort();
+  const max=Math.max(...Object.values(byMonth));
+  const chart=document.getElementById('chart');
+  const labels=document.getElementById('chart-labels');
+  months.forEach(m=>{
+    const n=byMonth[m];
+    const pct=(n/max*100).toFixed(1);
+    const bar=document.createElement('div');
+    bar.className='chart-bar';
+    bar.style.height=pct+'%';
+    bar.innerHTML=`<span class="tooltip">${m}: ${n}</span>`;
+    bar.onclick=()=>{
+      document.getElementById('year-filter').value='';
+      document.getElementById('search').value=m;
+      render();
+    };
+    chart.appendChild(bar);
+    const lbl=document.createElement('span');
+    lbl.textContent=m.slice(5);
+    labels.appendChild(lbl);
+  });
+}
+
+function populateFilters(){
+  const years=new Set(DATA.transmissions.map(t=>t.date.slice(0,4)));
+  const sel=document.getElementById('year-filter');
+  [...years].sort().forEach(y=>{
+    const o=document.createElement('option');
+    o.value=y;o.textContent=y;
+    sel.appendChild(o);
+  });
+}
+
+function getFiltered(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  const yr=document.getElementById('year-filter').value;
+  const tp=document.getElementById('type-filter').value;
+
+  return DATA.transmissions.filter(t=>{
+    if(yr && !t.date.startsWith(yr))return false;
+    if(tp && !t.type.includes(tp))return false;
+    if(q){
+      const hay=[
+        t.date,t.time_msk,
+        ...t.callsigns,...t.command_blocks,...t.words,...t.target_blocks,
+        t.notes
+      ].join(' ').toLowerCase();
+      return hay.includes(q);
+    }
+    return true;
+  });
+}
+
+function render(){
+  const filtered=getFiltered();
+  const el=document.getElementById('content');
+
+  if(!filtered.length){
+    el.innerHTML='<div class="empty">No transmissions found.</div>';
+    return;
+  }
+
+  if(currentView==='table'){
+    renderTable(filtered,el);
+  }else{
+    renderTimeline(filtered,el);
+  }
+}
+
+function renderTimeline(txs,el){
+  const byDay={};
+  txs.forEach(t=>{
+    if(!byDay[t.date])byDay[t.date]=[];
+    byDay[t.date].push(t);
+  });
+
+  const days=Object.keys(byDay).sort().reverse();
+  let html='';
+
+  days.forEach(day=>{
+    const list=byDay[day];
+    const d=new Date(day+'T00:00:00');
+    const dayName=d.toLocaleDateString('en-US',{weekday:'short',year:'numeric',month:'short',day:'numeric'});
+    html+=`<div class="day-group">
+      <div class="day-header">
+        <span>${dayName}</span>
+        <span class="count">${list.length}</span>
+      </div>`;
+
+    list.forEach(t=>{
+      const cls=t.type.includes('double')?'double':
+                t.type.includes('triple')?'triple':
+                t.type.includes('quadruple')?'quadruple':
+                t.type==='anomaly'?'anomaly':'';
+      html+=`<div class="tx ${cls}">
+        <div class="time">${esc(t.time_msk)}</div>
+        <div class="content">
+          ${t.callsigns.map(c=>`<span class="callsign">${esc(c)}</span>`).join('')}
+          ${t.command_blocks.map(b=>`<span class="cmd">${esc(b)}</span>`).join('')}
+          ${t.words.map(w=>`<span class="word">${esc(w)}</span>`).join('')}
+          ${t.target_blocks.map(b=>`<span class="block">${esc(b)}</span>`).join('')}
+          ${t.notes?`<span class="note">[${esc(t.notes)}]</span>`:''}
+        </div>
+      </div>`;
+    });
+    html+='</div>';
+  });
+
+  el.innerHTML=html;
+}
+
+function renderTable(txs,el){
+  let html=`<table style="width:100%;border-collapse:collapse;font-size:.75rem">
+    <thead><tr style="border-bottom:1px solid var(--border);color:var(--dim);text-align:left">
+      <th style="padding:.4rem">Date</th>
+      <th style="padding:.4rem">Time</th>
+      <th style="padding:.4rem">Callsign</th>
+      <th style="padding:.4rem">Cmd</th>
+      <th style="padding:.4rem">Word(s)</th>
+      <th style="padding:.4rem">Blocks</th>
+      <th style="padding:.4rem">Type</th>
+    </tr></thead><tbody>`;
+
+  txs.forEach(t=>{
+    html+=`<tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:.3rem .4rem;color:var(--dim)">${esc(t.date)}</td>
+      <td style="padding:.3rem .4rem">${esc(t.time_msk)}</td>
+      <td style="padding:.3rem .4rem;color:var(--accent2)">${t.callsigns.map(esc).join('+')}</td>
+      <td style="padding:.3rem .4rem;color:var(--dim)">${t.command_blocks.map(esc).join('+')}</td>
+      <td style="padding:.3rem .4rem;color:#fff;font-weight:600">${t.words.map(esc).join(' ')}</td>
+      <td style="padding:.3rem .4rem;color:var(--green)">${t.target_blocks.map(esc).join(' | ')}</td>
+      <td style="padding:.3rem .4rem;color:var(--dim)">${esc(t.type)}</td>
+    </tr>`;
+  });
+
+  html+='</tbody></table>';
+  el.innerHTML=html;
+}
+
+function esc(s){
+  const d=document.createElement('div');
+  d.textContent=s||'';
+  return d.innerHTML;
+}
+
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('year-filter').addEventListener('change',render);
+document.getElementById('type-filter').addEventListener('change',render);
+
+document.getElementById('view-toggle').addEventListener('click',e=>{
+  if(e.target.tagName!=='BUTTON')return;
+  document.querySelectorAll('#view-toggle button').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  currentView=e.target.dataset.view;
+  render();
+});
+
+init();
+</script>
+</body>
+</html>

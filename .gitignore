@@ -6,7 +6,7 @@ dist/
 build/
 .eggs/
 
-data/
+data/*.db
 *.db
 
 .env
