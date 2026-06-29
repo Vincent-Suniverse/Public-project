@@ -23,12 +23,14 @@ jobs:
       - run: pip install requests
 
       - name: Fetch new transmissions
+        if: ${{ secrets.TELEGRAM_BOT_TOKEN != '' }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL: '@uvb76logs'
         run: python scripts/telegram_ingest.py
 
       - name: Commit and push if changed
+        if: ${{ secrets.TELEGRAM_BOT_TOKEN != '' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

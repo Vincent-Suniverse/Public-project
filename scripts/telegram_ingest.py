@@ -183,8 +183,8 @@ def load_state() -> int | None:
 
 def main():
     if not BOT_TOKEN:
-        print("TELEGRAM_BOT_TOKEN not set", file=sys.stderr)
-        sys.exit(1)
+        print("TELEGRAM_BOT_TOKEN not set — skipping ingest.")
+        sys.exit(0)
 
     offset = load_state()
     if offset:
