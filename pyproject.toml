@@ -9,6 +9,7 @@ description = "Monitoring pipeline for ADS-B aircraft transponder transmissions"
 requires-python = ">=3.10"
 dependencies = [
     "requests>=2.31",
+    "telethon>=1.36",
 ]
 
 [project.scripts]
