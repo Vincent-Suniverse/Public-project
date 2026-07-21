@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
-"""Fetch new UVB-76 transmissions from Telegram channel and update the database."""
+"""Fetch new UVB-76 transmissions from a Telegram channel and update the database.
+
+Uses the Telethon user API (MTProto) so it can read a *public* channel that we do
+NOT own or administer (e.g. @uvb76logs). A bot cannot do this — bots only receive
+posts from channels they administer — which is why this reads as a user session.
+
+Required environment (set as GitHub Actions secrets):
+  TELEGRAM_API_ID    - integer app id  (my.telegram.org)
+  TELEGRAM_API_HASH  - app hash        (my.telegram.org)
+  TELEGRAM_SESSION   - Telethon StringSession (generate once via scripts/generate_session.py)
+  TELEGRAM_CHANNEL   - channel username, default @uvb76logs
+
+On the first run (no stored state) it backfills the whole channel history; after
+that it only pulls messages newer than the last seen message id.
+"""
 
 import json
 import os
@@ -8,34 +22,26 @@ import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-import requests
+from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
 
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+API_ID = os.environ.get("TELEGRAM_API_ID", "")
+API_HASH = os.environ.get("TELEGRAM_API_HASH", "")
+SESSION = os.environ.get("TELEGRAM_SESSION", "")
 CHANNEL = os.environ.get("TELEGRAM_CHANNEL", "@uvb76logs")
 MSK = timezone(timedelta(hours=3))
 
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
 DOCS_DIR = ROOT / "docs"
-STATE_FILE = DATA_DIR / ".last_update_id"
+STATE_FILE = DATA_DIR / ".last_message_id"
 INGEST_LOG = DATA_DIR / "UVB76_TELEGRAM_INGEST.md"
 JSON_OUT = DOCS_DIR / "transmissions.json"
 
 
-def get_updates(offset: int | None = None) -> list[dict]:
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates"
-    params = {"timeout": 10, "allowed_updates": '["channel_post"]'}
-    if offset:
-        params["offset"] = offset
-    resp = requests.get(url, params=params, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-    if not data.get("ok"):
-        print(f"Telegram API error: {data}", file=sys.stderr)
-        return []
-    return data.get("result", [])
-
-
+# --------------------------------------------------------------------------- #
+#  Parsing (unchanged, verified logic — identical to the previous version)     #
+# --------------------------------------------------------------------------- #
 def parse_message_text(text: str, msg_date: datetime) -> list[dict]:
     """Parse one Telegram message into zero or more transmission dicts."""
     results = []
@@ -51,8 +57,6 @@ def parse_message_text(text: str, msg_date: datetime) -> list[dict]:
 
 def try_parse_line(line: str, fallback_date: datetime) -> dict | None:
     """Try to parse a single line as a UVB-76 transmission."""
-    original = line
-
     notes_match = re.search(r"\[([^\]]+)\]\s*$", line)
     notes = notes_match.group(1) if notes_match else ""
     if notes_match:
@@ -139,6 +143,9 @@ def try_parse_line(line: str, fallback_date: datetime) -> dict | None:
     }
 
 
+# --------------------------------------------------------------------------- #
+#  Store / dedup / log (unchanged)                                             #
+# --------------------------------------------------------------------------- #
 def load_existing() -> dict:
     if JSON_OUT.exists():
         return json.loads(JSON_OUT.read_text(encoding="utf-8"))
@@ -150,7 +157,6 @@ def make_dedup_key(tx: dict) -> tuple:
 
 
 def append_to_log(transmissions: list[dict]):
-    """Append new transmissions to the markdown ingest log."""
     lines = []
     if not INGEST_LOG.exists():
         lines.append("# UVB-76 Telegram Ingest Log\n")
@@ -170,8 +176,8 @@ def append_to_log(transmissions: list[dict]):
         f.write("\n".join(lines) + "\n")
 
 
-def save_state(update_id: int):
-    STATE_FILE.write_text(str(update_id), encoding="utf-8")
+def save_state(message_id: int):
+    STATE_FILE.write_text(str(message_id), encoding="utf-8")
 
 
 def load_state() -> int | None:
@@ -181,46 +187,48 @@ def load_state() -> int | None:
     return None
 
 
+# --------------------------------------------------------------------------- #
+#  Main                                                                        #
+# --------------------------------------------------------------------------- #
 def main():
-    if not BOT_TOKEN:
-        print("TELEGRAM_BOT_TOKEN not set — skipping ingest.")
+    if not (API_ID and API_HASH and SESSION):
+        print("TELEGRAM_API_ID / API_HASH / SESSION not all set — skipping ingest.")
         sys.exit(0)
 
-    offset = load_state()
-    if offset:
-        offset += 1
-
-    updates = get_updates(offset)
-    if not updates:
-        print("No new updates.")
-        return
-
+    last_id = load_state()
     existing = load_existing()
     seen = {make_dedup_key(tx) for tx in existing["transmissions"]}
     new_transmissions = []
-    last_update_id = offset or 0
+    max_id = last_id or 0
 
-    for update in updates:
-        last_update_id = max(last_update_id, update["update_id"])
-        post = update.get("channel_post") or update.get("message")
-        if not post:
-            continue
-        text = post.get("text", "")
-        if not text:
-            continue
+    with TelegramClient(StringSession(SESSION), int(API_ID), API_HASH) as client:
+        if not client.is_user_authorized():
+            print("Session not authorized — regenerate TELEGRAM_SESSION.", file=sys.stderr)
+            sys.exit(1)
 
-        msg_ts = datetime.fromtimestamp(post["date"], tz=MSK)
-        parsed = parse_message_text(text, msg_ts)
-        for tx in parsed:
-            key = make_dedup_key(tx)
-            if key not in seen:
-                seen.add(key)
-                new_transmissions.append(tx)
+        # reverse=True -> oldest first; min_id -> only messages newer than last seen.
+        # No stored state => full backfill of the channel history.
+        kwargs = {"reverse": True}
+        if last_id:
+            kwargs["min_id"] = last_id
 
-    save_state(last_update_id)
+        for msg in client.iter_messages(CHANNEL, **kwargs):
+            if msg.id > max_id:
+                max_id = msg.id
+            text = msg.message or ""
+            if not text:
+                continue
+            msg_ts = msg.date.astimezone(MSK) if msg.date else datetime.now(MSK)
+            for tx in parse_message_text(text, msg_ts):
+                key = make_dedup_key(tx)
+                if key not in seen:
+                    seen.add(key)
+                    new_transmissions.append(tx)
+
+    save_state(max_id)
 
     if not new_transmissions:
-        print("No new transmissions found in updates.")
+        print("No new transmissions found.")
         return
 
     print(f"Found {len(new_transmissions)} new transmission(s).")
