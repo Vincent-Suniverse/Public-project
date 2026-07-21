@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1177,
+    "total_transmissions": 1180,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-06-24"
@@ -20872,6 +20872,42 @@
     },
     {
       "date": "2026-05-15",
+      "time_msk": "00:46",
+      "callsigns": [
+        "У352"
+      ],
+      "command_blocks": [
+        "80022"
+      ],
+      "words": [
+        "МЯЧОХЛЕБ"
+      ],
+      "target_blocks": [
+        "8679 8735"
+      ],
+      "notes": "",
+      "type": "single"
+    },
+    {
+      "date": "2026-05-15",
+      "time_msk": "01:56",
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "39287"
+      ],
+      "words": [
+        "МЯЧОХЛЕБ"
+      ],
+      "target_blocks": [
+        "8679 8735"
+      ],
+      "notes": "",
+      "type": "single"
+    },
+    {
+      "date": "2026-05-15",
       "time_msk": "11:22",
       "callsigns": [
         "У352"
@@ -20969,6 +21005,24 @@
       ],
       "notes": "FORMAT-BRUCH Triple-Side 2. Tag, Mail-Vorbereitung",
       "type": "multi-callsign-single"
+    },
+    {
+      "date": "2026-05-21",
+      "time_msk": "05:06",
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "58384"
+      ],
+      "words": [
+        "ЖЕСТОКАИН"
+      ],
+      "target_blocks": [
+        "2363 5984"
+      ],
+      "notes": "",
+      "type": "single"
     },
     {
       "date": "2026-05-21",
