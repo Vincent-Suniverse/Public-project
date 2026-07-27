@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1180,
+    "total_transmissions": 1208,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-06-24"
+      "end": "2026-07-27"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -21486,6 +21486,24 @@
       "type": "single"
     },
     {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "68567"
+      ],
+      "words": [
+        "ГЕНОЛИС"
+      ],
+      "target_blocks": [
+        "3433 6565"
+      ],
+      "type": "single",
+      "date": "2026-06-24",
+      "time_msk": "10:36",
+      "notes": ""
+    },
+    {
       "date": "2026-06-24",
       "time_msk": "10:42",
       "callsigns": [
@@ -21583,6 +21601,506 @@
       "target_blocks": [],
       "notes": "",
       "type": "double"
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "20780"
+      ],
+      "words": [
+        "ЛЕССОЛИТР"
+      ],
+      "target_blocks": [
+        "0465 2306"
+      ],
+      "type": "single",
+      "date": "2026-06-24",
+      "time_msk": "13:52",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "88837"
+      ],
+      "words": [
+        "ФРИЦОТЮТЯ",
+        "МАКЛЕР"
+      ],
+      "target_blocks": [
+        "8115 8966",
+        "2225 2088"
+      ],
+      "type": "double",
+      "date": "2026-06-24",
+      "time_msk": "14:28",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "72472"
+      ],
+      "words": [
+        "ПОДДЕРЖКА"
+      ],
+      "target_blocks": [
+        "6947 2406"
+      ],
+      "type": "single",
+      "date": "2026-06-24",
+      "time_msk": "14:53",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "81383"
+      ],
+      "words": [
+        "ВЕСНА"
+      ],
+      "target_blocks": [
+        "9744 9281"
+      ],
+      "type": "single",
+      "date": "2026-06-24",
+      "time_msk": "15:43",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "73585"
+      ],
+      "words": [
+        "АМИДОМАЙН",
+        "ЗОВОПЛЕД"
+      ],
+      "target_blocks": [
+        "0010 7943",
+        "5536 5331"
+      ],
+      "type": "double",
+      "date": "2026-06-24",
+      "time_msk": "16:49",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "ЦЖАП"
+      ],
+      "command_blocks": [
+        "86197"
+      ],
+      "words": [
+        "ВУРДАЛАК",
+        "МАЗАНИЕ"
+      ],
+      "target_blocks": [
+        "0100 8575",
+        "5406 6554"
+      ],
+      "type": "double",
+      "date": "2026-06-24",
+      "time_msk": "16:58",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "72923"
+      ],
+      "words": [
+        "МРАКОЩУП"
+      ],
+      "target_blocks": [
+        "7095 3957"
+      ],
+      "type": "single",
+      "date": "2026-06-24",
+      "time_msk": "16:59",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "17768"
+      ],
+      "words": [
+        "КЛЮВИК"
+      ],
+      "target_blocks": [
+        "5162 7289"
+      ],
+      "type": "single",
+      "date": "2026-06-24",
+      "time_msk": "17:10",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "56231"
+      ],
+      "words": [
+        "КРЮК"
+      ],
+      "target_blocks": [
+        "6856 1920"
+      ],
+      "type": "single",
+      "date": "2026-06-25",
+      "time_msk": "13:01",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "09989"
+      ],
+      "words": [
+        "ОБЕЗЬЯНКА"
+      ],
+      "target_blocks": [
+        "3641 5048"
+      ],
+      "type": "single",
+      "date": "2026-06-25",
+      "time_msk": "19:01",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "81464"
+      ],
+      "words": [
+        "ВЕРХОСОК"
+      ],
+      "target_blocks": [
+        "9399 3945"
+      ],
+      "type": "single",
+      "date": "2026-06-29",
+      "time_msk": "15:34",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "01616"
+      ],
+      "words": [
+        "НАЗНАЧЕНИЕ",
+        "БОРТОВЩИК"
+      ],
+      "target_blocks": [
+        "7272 3084",
+        "2434 5573"
+      ],
+      "type": "double",
+      "date": "2026-07-01",
+      "time_msk": "16:55",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "71919"
+      ],
+      "words": [
+        "ГЕРЦОТЮТЯ",
+        "СМОКОВНЫЙ"
+      ],
+      "target_blocks": [
+        "1760 8868",
+        "6191 3430"
+      ],
+      "type": "double",
+      "date": "2026-07-03",
+      "time_msk": "19:56",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "54385"
+      ],
+      "words": [
+        "НЕОНОКЛЮЗ"
+      ],
+      "target_blocks": [
+        "1669 4735"
+      ],
+      "type": "single",
+      "date": "2026-07-04",
+      "time_msk": "15:26",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "35852"
+      ],
+      "words": [
+        "НЕОНОКЛЮЗ",
+        "ТРОН"
+      ],
+      "target_blocks": [
+        "1669 4735",
+        "6479 2375"
+      ],
+      "type": "double",
+      "date": "2026-07-09",
+      "time_msk": "11:18",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "64528"
+      ],
+      "words": [
+        "ГРОТЕСКНЫЙ"
+      ],
+      "target_blocks": [
+        "8326 9314"
+      ],
+      "type": "single",
+      "date": "2026-07-09",
+      "time_msk": "13:06",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "82969"
+      ],
+      "words": [
+        "ЖИЛОТДЕЛ"
+      ],
+      "target_blocks": [
+        "6204 7160"
+      ],
+      "type": "single",
+      "date": "2026-07-09",
+      "time_msk": "14:38",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "10072"
+      ],
+      "words": [
+        "МНЕМОНИКА"
+      ],
+      "target_blocks": [
+        "3132 5387"
+      ],
+      "type": "single",
+      "date": "2026-07-13",
+      "time_msk": "10:52",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "07154"
+      ],
+      "words": [
+        "ФИАТОПЛОТ"
+      ],
+      "target_blocks": [
+        "0101 8197"
+      ],
+      "type": "single",
+      "date": "2026-07-16",
+      "time_msk": "12:24",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "06637"
+      ],
+      "words": [
+        "СУХОДЕЛИЕ"
+      ],
+      "target_blocks": [
+        "8423 6010"
+      ],
+      "type": "single",
+      "date": "2026-07-16",
+      "time_msk": "14:18",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "52049"
+      ],
+      "words": [
+        "ВАРОЛЯЗГ"
+      ],
+      "target_blocks": [
+        "4400 9901"
+      ],
+      "type": "single",
+      "date": "2026-07-16",
+      "time_msk": "18:43",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "41637"
+      ],
+      "words": [
+        "ПЛУГОПОНИ"
+      ],
+      "target_blocks": [
+        "1395 2560"
+      ],
+      "type": "single",
+      "date": "2026-07-17",
+      "time_msk": "15:07",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "25430"
+      ],
+      "words": [
+        "АРАКОГНЕВ"
+      ],
+      "target_blocks": [
+        "5911 5050"
+      ],
+      "type": "single",
+      "date": "2026-07-20",
+      "time_msk": "12:35",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "51488"
+      ],
+      "words": [
+        "ОБРОК"
+      ],
+      "target_blocks": [
+        "1417 1993"
+      ],
+      "type": "single",
+      "date": "2026-07-20",
+      "time_msk": "14:10",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "44979"
+      ],
+      "words": [
+        "ЛАРИНГОЛОГ",
+        "БРАХМАНСКИЙ"
+      ],
+      "target_blocks": [
+        "9517 0302",
+        "9371 6700"
+      ],
+      "type": "double",
+      "date": "2026-07-23",
+      "time_msk": "11:40",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "84989"
+      ],
+      "words": [
+        "АДОГЛЕТ"
+      ],
+      "target_blocks": [
+        "6660 6133"
+      ],
+      "type": "single",
+      "date": "2026-07-27",
+      "time_msk": "10:51",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "87258"
+      ],
+      "words": [
+        "АНАРХИСТКА"
+      ],
+      "target_blocks": [
+        "4408 7287"
+      ],
+      "type": "single",
+      "date": "2026-07-27",
+      "time_msk": "11:38",
+      "notes": ""
     }
   ]
 }
