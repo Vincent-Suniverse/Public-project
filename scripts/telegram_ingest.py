@@ -12,7 +12,10 @@ Required environment (set as GitHub Actions secrets):
   TELEGRAM_CHANNEL   - channel username, default @uvb76logs
 
 On the first run (no stored state) it backfills the whole channel history; after
-that it only pulls messages newer than the last seen message id.
+that it only pulls messages newer than the last seen message id. When the parser
+schema changes (STATE_SCHEMA below), the stored offset is treated as stale and a
+one-off full re-backfill runs so posts that failed to parse under the old parser
+are picked up. Deduplication keeps that from creating duplicates.
 """
 
 import json
@@ -31,6 +34,11 @@ SESSION = os.environ.get("TELEGRAM_SESSION", "")
 CHANNEL = os.environ.get("TELEGRAM_CHANNEL", "@uvb76logs")
 MSK = timezone(timedelta(hours=3))
 
+# Bump this whenever the parser changes in a way that means older messages should
+# be re-read from the channel. A stored offset from a different schema is ignored,
+# forcing a single full re-backfill (dedup prevents duplicate rows).
+STATE_SCHEMA = 2
+
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
 DOCS_DIR = ROOT / "docs"
@@ -38,67 +46,51 @@ STATE_FILE = DATA_DIR / ".last_message_id"
 INGEST_LOG = DATA_DIR / "UVB76_TELEGRAM_INGEST.md"
 JSON_OUT = DOCS_DIR / "transmissions.json"
 
+# Russian month names -> month number (for the "09 июля 2026 14:38" date line).
+RU_MONTHS = {
+    "января": 1, "февраля": 2, "марта": 3, "апреля": 4, "мая": 5, "июня": 6,
+    "июля": 7, "августа": 8, "сентября": 9, "октября": 10, "ноября": 11, "декабря": 12,
+}
+
+# Latin homoglyphs -> Cyrillic. Channel posts occasionally mix Latin look-alikes
+# into otherwise-Cyrillic words (e.g. "HЖTИ", "CУXOДEЛИE"); normalising keeps the
+# call-signs and code-words consistent for search and de-duplication.
+HOMO = str.maketrans({
+    "A": "А", "B": "В", "C": "С", "E": "Е", "H": "Н", "K": "К", "M": "М",
+    "O": "О", "P": "Р", "T": "Т", "X": "Х", "Y": "У",
+    "a": "а", "c": "с", "e": "е", "k": "к", "m": "м", "o": "о", "p": "р",
+    "t": "т", "x": "х", "y": "у",
+})
+
+
+def normalize_homoglyphs(s: str) -> str:
+    return s.translate(HOMO)
+
 
 # --------------------------------------------------------------------------- #
-#  Parsing (unchanged, verified logic — identical to the previous version)     #
+#  Parsing                                                                     #
 # --------------------------------------------------------------------------- #
-def parse_message_text(text: str, msg_date: datetime) -> list[dict]:
-    """Parse one Telegram message into zero or more transmission dicts."""
-    results = []
-    for line in text.split("\n"):
-        line = line.strip()
-        if not line:
-            continue
-        tx = try_parse_line(line, msg_date)
-        if tx:
-            results.append(tx)
-    return results
+def parse_body(line: str) -> dict | None:
+    """Parse '<call-sign> <5-digit> <word> <4-digit> <4-digit> ...' into fields.
 
-
-def try_parse_line(line: str, fallback_date: datetime) -> dict | None:
-    """Try to parse a single line as a UVB-76 transmission."""
-    notes_match = re.search(r"\[([^\]]+)\]\s*$", line)
-    notes = notes_match.group(1) if notes_match else ""
-    if notes_match:
-        line = line[: notes_match.start()].strip()
-
-    date_str = None
-    time_str = None
-
-    # Format: "29.6. 10:31 ..." or "29.06. 10:31 ..."
-    m = re.match(r"^(\d{1,2})\.(\d{1,2})\.\s+(\d{2}:\d{2})\s+", line)
-    if m:
-        day, month = int(m.group(1)), int(m.group(2))
-        year = fallback_date.year
-        date_str = f"{year}-{month:02d}-{day:02d}"
-        time_str = m.group(3)
-        line = line[m.end():].strip()
-    else:
-        # Format: "10:31 MSK ..." or "10:31 ..."
-        m = re.match(r"^(\d{2}:\d{2})\s+(?:MSK\s+)?", line)
-        if m:
-            time_str = m.group(1)
-            date_str = fallback_date.strftime("%Y-%m-%d")
-            line = line[m.end():].strip()
-
-    if not time_str:
-        return None
-
-    # Callsign(s)
+    Returns the transmission fields WITHOUT date/time/notes, or None if the line
+    is not a transmission body (header line, ordinal line, hashtag, date line …).
+    """
+    # Call-sign(s): one token (optionally joined with '+'), followed by a space.
     m = re.match(r"^([\wЀ-ӿ]+(?:\+[\wЀ-ӿ]+)*)\s+", line)
     if not m:
         return None
     callsigns = m.group(1).split("+")
     line = line[m.end():].strip()
 
-    # 5-digit command block(s)
+    # 5-digit command block(s).
     m = re.match(r"^(\d{5}(?:\+\d{5})*)\s+", line)
     if not m:
         return None
     command_blocks = m.group(1).split("+")
     line = line[m.end():].strip()
 
-    # Remaining: words and 4-digit target blocks
+    # Remaining: code-words and 4-digit target blocks (paired when consecutive).
     words = []
     target_blocks = []
     tokens = line.replace("/", " ").split()
@@ -132,19 +124,104 @@ def try_parse_line(line: str, fallback_date: datetime) -> dict | None:
         tx_type = f"multi-callsign-{tx_type}"
 
     return {
-        "date": date_str,
-        "time_msk": time_str,
         "callsigns": callsigns,
         "command_blocks": command_blocks,
         "words": words,
         "target_blocks": target_blocks,
-        "notes": notes,
         "type": tx_type,
     }
 
 
+def try_parse_line(line: str, fallback_date: datetime) -> dict | None:
+    """Legacy single-line format: '29.6. 10:31 НЖТИ 82969 …' or '10:31 MSK …'."""
+    notes_match = re.search(r"\[([^\]]+)\]\s*$", line)
+    notes = notes_match.group(1) if notes_match else ""
+    if notes_match:
+        line = line[: notes_match.start()].strip()
+
+    date_str = None
+    time_str = None
+
+    m = re.match(r"^(\d{1,2})\.(\d{1,2})\.\s+(\d{2}:\d{2})\s+", line)
+    if m:
+        day, month = int(m.group(1)), int(m.group(2))
+        date_str = f"{fallback_date.year}-{month:02d}-{day:02d}"
+        time_str = m.group(3)
+        line = line[m.end():].strip()
+    else:
+        m = re.match(r"^(\d{2}:\d{2})\s+(?:MSK\s+)?", line)
+        if m:
+            time_str = m.group(1)
+            date_str = fallback_date.strftime("%Y-%m-%d")
+            line = line[m.end():].strip()
+
+    if not time_str:
+        return None
+
+    body = parse_body(line)
+    if not body:
+        return None
+    body["date"] = date_str
+    body["time_msk"] = time_str
+    body["notes"] = notes
+    return body
+
+
+def find_russian_datetime(lines: list[str]):
+    """Find the '<DD> <month> <YYYY> <HH:MM>' line -> (date_str, time_str)."""
+    for line in lines:
+        m = re.search(r"(\d{1,2})\s+([А-Яа-яЁё]+)\s+(\d{4})\s+(\d{1,2}):(\d{2})", line)
+        if m:
+            month = RU_MONTHS.get(m.group(2).lower())
+            if month:
+                return (
+                    f"{int(m.group(3))}-{month:02d}-{int(m.group(1)):02d}",
+                    f"{int(m.group(4)):02d}:{m.group(5)}",
+                )
+    return None, None
+
+
+def parse_message_text(text: str, msg_date: datetime) -> list[dict]:
+    """Parse one Telegram message into zero or more transmission dicts.
+
+    Handles the current @uvb76logs multi-line format:
+
+        УВБ-76 (радиостанция судного дня):
+        Третье сообщение сегодня
+        09 июля 2026 14:38 по МСК
+        НЖТИ 82969 ЖИЛОТДЕЛ 6204 7160
+        #радиосудногодня …
+
+    where the date/time sits on its own line and the payload lines carry no
+    leading timestamp. Falls back to the legacy single-line format otherwise.
+    """
+    lines = [ln.strip() for ln in text.split("\n") if ln.strip()]
+    results = []
+
+    date_str, time_str = find_russian_datetime(lines)
+    if date_str:
+        for line in lines:
+            if line.startswith("#"):  # hashtag line
+                continue
+            body = parse_body(normalize_homoglyphs(line))
+            if body:
+                body["date"] = date_str
+                body["time_msk"] = time_str
+                body["notes"] = ""
+                results.append(body)
+        if results:
+            return results
+
+    # Legacy fallback (also used for any message without a Russian date line).
+    for line in lines:
+        tx = try_parse_line(line, msg_date)
+        if tx:
+            results.append(tx)
+    return results
+
+
 # --------------------------------------------------------------------------- #
-#  Store / dedup / log (unchanged)                                             #
+#  Store / dedup / log                                                         #
 # --------------------------------------------------------------------------- #
 def load_existing() -> dict:
     if JSON_OUT.exists():
@@ -177,13 +254,26 @@ def append_to_log(transmissions: list[dict]):
 
 
 def save_state(message_id: int):
-    STATE_FILE.write_text(str(message_id), encoding="utf-8")
+    STATE_FILE.write_text(f"v{STATE_SCHEMA}:{message_id}", encoding="utf-8")
 
 
 def load_state() -> int | None:
-    if STATE_FILE.exists():
-        text = STATE_FILE.read_text().strip()
-        return int(text) if text else None
+    """Return the last seen message id, or None to force a full backfill.
+
+    A stored offset from an older parser schema (or the legacy bare-integer
+    format) returns None so the whole history is re-scanned once with the
+    current parser.
+    """
+    if not STATE_FILE.exists():
+        return None
+    raw = STATE_FILE.read_text().strip()
+    if raw.startswith("v"):
+        ver, _, mid = raw[1:].partition(":")
+        try:
+            if int(ver) == STATE_SCHEMA and mid:
+                return int(mid)
+        except ValueError:
+            pass
     return None
 
 
@@ -198,6 +288,13 @@ def main():
     last_id = load_state()
     existing = load_existing()
     seen = {make_dedup_key(tx) for tx in existing["transmissions"]}
+
+    # Never re-add anything older than what the curated register already covers;
+    # this protects the hand-checked history from telegram-sourced duplicates and
+    # keeps ingest focused on genuinely new broadcasts.
+    existing_dates = [tx["date"] for tx in existing["transmissions"] if tx.get("date")]
+    min_accept_date = max(existing_dates) if existing_dates else None
+
     new_transmissions = []
     max_id = last_id or 0
 
@@ -207,7 +304,7 @@ def main():
             sys.exit(1)
 
         # reverse=True -> oldest first; min_id -> only messages newer than last seen.
-        # No stored state => full backfill of the channel history.
+        # No usable stored state => full backfill of the channel history.
         kwargs = {"reverse": True}
         if last_id:
             kwargs["min_id"] = last_id
@@ -220,6 +317,8 @@ def main():
                 continue
             msg_ts = msg.date.astimezone(MSK) if msg.date else datetime.now(MSK)
             for tx in parse_message_text(text, msg_ts):
+                if min_accept_date and tx["date"] and tx["date"] < min_accept_date:
+                    continue
                 key = make_dedup_key(tx)
                 if key not in seen:
                     seen.add(key)
