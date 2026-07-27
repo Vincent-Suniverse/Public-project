@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1208,
+    "total_transmissions": 1209,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-07-27"
@@ -22100,6 +22100,24 @@
       "type": "single",
       "date": "2026-07-27",
       "time_msk": "11:38",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "06089"
+      ],
+      "words": [
+        "ТИБРОХИТ"
+      ],
+      "target_blocks": [
+        "1673 1477"
+      ],
+      "type": "single",
+      "date": "2026-07-27",
+      "time_msk": "15:32",
       "notes": ""
     }
   ]
