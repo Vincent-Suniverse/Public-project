@@ -2,14 +2,14 @@
 """Fetch new UVB-76 transmissions from a Telegram channel and update the database.
 
 Uses the Telethon user API (MTProto) so it can read a *public* channel that we do
-NOT own or administer (e.g. @uvb76logs). A bot cannot do this — bots only receive
+NOT own or administer (@UVB_76_radio). A bot cannot do this — bots only receive
 posts from channels they administer — which is why this reads as a user session.
 
 Required environment (set as GitHub Actions secrets):
   TELEGRAM_API_ID    - integer app id  (my.telegram.org)
   TELEGRAM_API_HASH  - app hash        (my.telegram.org)
   TELEGRAM_SESSION   - Telethon StringSession (generate once via scripts/generate_session.py)
-  TELEGRAM_CHANNEL   - channel username, default @uvb76logs
+  TELEGRAM_CHANNEL   - channel username, default @UVB_76_radio
 
 On the first run (no stored state) it backfills the whole channel history; after
 that it only pulls messages newer than the last seen message id. When the parser
@@ -31,13 +31,14 @@ from telethon.sessions import StringSession
 API_ID = os.environ.get("TELEGRAM_API_ID", "")
 API_HASH = os.environ.get("TELEGRAM_API_HASH", "")
 SESSION = os.environ.get("TELEGRAM_SESSION", "")
-CHANNEL = os.environ.get("TELEGRAM_CHANNEL", "@uvb76logs")
+CHANNEL = os.environ.get("TELEGRAM_CHANNEL", "@UVB_76_radio")
 MSK = timezone(timedelta(hours=3))
 
-# Bump this whenever the parser changes in a way that means older messages should
-# be re-read from the channel. A stored offset from a different schema is ignored,
-# forcing a single full re-backfill (dedup prevents duplicate rows).
-STATE_SCHEMA = 2
+# Bump this whenever the parser changes, or the source channel changes, so older
+# messages are re-read. A stored offset from a different schema is ignored, forcing
+# a single full re-backfill (dedup prevents duplicate rows). Bumped to 3 when the
+# source moved from the now-stale @uvb76logs to @UVB_76_radio.
+STATE_SCHEMA = 3
 
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
@@ -237,7 +238,7 @@ def append_to_log(transmissions: list[dict]):
     lines = []
     if not INGEST_LOG.exists():
         lines.append("# UVB-76 Telegram Ingest Log\n")
-        lines.append("Automatisch erfasste Übertragungen aus @uvb76logs.\n\n---\n")
+        lines.append("Automatisch erfasste Übertragungen aus @UVB_76_radio.\n\n---\n")
 
     for tx in transmissions:
         parts = [tx["date"], tx["time_msk"]]
