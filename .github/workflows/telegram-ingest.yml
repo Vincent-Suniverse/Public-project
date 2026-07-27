@@ -29,7 +29,7 @@ jobs:
       - name: Fetch new transmissions
         if: ${{ env.TELEGRAM_SESSION != '' }}
         env:
-          TELEGRAM_CHANNEL: '@uvb76logs'
+          TELEGRAM_CHANNEL: '@UVB_76_radio'
         run: python scripts/telegram_ingest.py
 
       - name: Commit and push if changed
