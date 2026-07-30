@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1216,
+    "total_transmissions": 1217,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-07-30"
@@ -22256,6 +22256,26 @@
       "type": "triple",
       "date": "2026-07-30",
       "time_msk": "15:52",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "29848"
+      ],
+      "words": [
+        "КЛЕТЧАТКА",
+        "НЕДОТЕПА"
+      ],
+      "target_blocks": [
+        "4331 9758",
+        "4369 8520"
+      ],
+      "type": "double",
+      "date": "2026-07-30",
+      "time_msk": "16:43",
       "notes": ""
     }
   ]
