@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1214,
+    "total_transmissions": 1216,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-07-30"
@@ -22214,6 +22214,48 @@
       "type": "single",
       "date": "2026-07-30",
       "time_msk": "14:06",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "71272"
+      ],
+      "words": [
+        "МУЖОПАЮС",
+        "БОЯЗЛИВОСТЬ"
+      ],
+      "target_blocks": [
+        "7878 9426",
+        "0932 6119"
+      ],
+      "type": "double",
+      "date": "2026-07-30",
+      "time_msk": "15:03",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "95498"
+      ],
+      "words": [
+        "СТЕПЕННЫЙ",
+        "ЦУГОПЕНС",
+        "КРУГОПАЯЦ"
+      ],
+      "target_blocks": [
+        "6872 7504",
+        "1252 9433",
+        "3833 7332"
+      ],
+      "type": "triple",
+      "date": "2026-07-30",
+      "time_msk": "15:52",
       "notes": ""
     }
   ]
