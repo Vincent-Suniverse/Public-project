@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1209,
+    "total_transmissions": 1214,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-07-27"
+      "end": "2026-07-30"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -22118,6 +22118,102 @@
       "type": "single",
       "date": "2026-07-27",
       "time_msk": "15:32",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "99068"
+      ],
+      "words": [
+        "ДОЯРОПУХ"
+      ],
+      "target_blocks": [
+        "8714 9689"
+      ],
+      "type": "single",
+      "date": "2026-07-30",
+      "time_msk": "12:20",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "19030"
+      ],
+      "words": [
+        "ГИДЖАК",
+        "МОНАРХИСТ"
+      ],
+      "target_blocks": [
+        "4742 3520",
+        "9381 3130"
+      ],
+      "type": "double",
+      "date": "2026-07-30",
+      "time_msk": "12:25",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "15501"
+      ],
+      "words": [
+        "ПУХОКОРМ",
+        "ГРАДОСБЕГ"
+      ],
+      "target_blocks": [
+        "2286 0100",
+        "2110 7469"
+      ],
+      "type": "double",
+      "date": "2026-07-30",
+      "time_msk": "13:12",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "82706"
+      ],
+      "words": [
+        "ВЗЯТОЧНИЦА",
+        "СЕКСОФАТ"
+      ],
+      "target_blocks": [
+        "0709 2918",
+        "7132 6500"
+      ],
+      "type": "double",
+      "date": "2026-07-30",
+      "time_msk": "14:02",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "73755"
+      ],
+      "words": [
+        "МОТЕЛЬ"
+      ],
+      "target_blocks": [
+        "0615 5894"
+      ],
+      "type": "single",
+      "date": "2026-07-30",
+      "time_msk": "14:06",
       "notes": ""
     }
   ]
