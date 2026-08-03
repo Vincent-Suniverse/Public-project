@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1217,
+    "total_transmissions": 1218,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-07-30"
+      "end": "2026-08-03"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -22276,6 +22276,24 @@
       "type": "double",
       "date": "2026-07-30",
       "time_msk": "16:43",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "91023"
+      ],
+      "words": [
+        "АРАКОКАПО"
+      ],
+      "target_blocks": [
+        "1117 3676"
+      ],
+      "type": "single",
+      "date": "2026-08-03",
+      "time_msk": "15:38",
       "notes": ""
     }
   ]
