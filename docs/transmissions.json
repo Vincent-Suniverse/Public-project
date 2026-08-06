@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1219,
+    "total_transmissions": 1224,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-08-03"
+      "end": "2026-08-06"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -22312,6 +22312,104 @@
       "type": "single",
       "date": "2026-08-03",
       "time_msk": "17:06",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "03651"
+      ],
+      "words": [
+        "КАЗУС"
+      ],
+      "target_blocks": [
+        "9968 2747"
+      ],
+      "type": "single",
+      "date": "2026-08-06",
+      "time_msk": "12:32",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "78155"
+      ],
+      "words": [
+        "ЛИСОЛАОС",
+        "ЗНАКОСРУБ"
+      ],
+      "target_blocks": [
+        "5604 5596",
+        "8757 3852"
+      ],
+      "type": "double",
+      "date": "2026-08-06",
+      "time_msk": "12:42",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "83784"
+      ],
+      "words": [
+        "КРАБОНАСТ",
+        "ТАССОШИФР",
+        "КИЛОРЫСК"
+      ],
+      "target_blocks": [
+        "3056 8509",
+        "8632 5004",
+        "4115 6322"
+      ],
+      "type": "triple",
+      "date": "2026-08-06",
+      "time_msk": "12:53",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "48764"
+      ],
+      "words": [
+        "КАНОКБИТ",
+        "ДЕКОГЕРБ"
+      ],
+      "target_blocks": [
+        "7126 5183",
+        "8762 9884"
+      ],
+      "type": "double",
+      "date": "2026-08-06",
+      "time_msk": "13:59",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "15955"
+      ],
+      "words": [
+        "БРЕТОНСКИЙ"
+      ],
+      "target_blocks": [
+        "1140 1810"
+      ],
+      "type": "single",
+      "date": "2026-08-06",
+      "time_msk": "14:27",
       "notes": ""
     }
   ]
