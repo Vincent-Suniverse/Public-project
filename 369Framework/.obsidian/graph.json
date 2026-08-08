@@ -1,0 +1,37 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:Archive-Analysen/Claude",
+      "color": { "a": 1, "rgb": 5765887 }
+    },
+    {
+      "query": "path:Archive-Analysen/DeepSeek",
+      "color": { "a": 1, "rgb": 65382 }
+    },
+    {
+      "query": "path:Konzepte",
+      "color": { "a": 1, "rgb": 16750848 }
+    },
+    {
+      "query": "path:Themen",
+      "color": { "a": 1, "rgb": 16711935 }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.5,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250
+}

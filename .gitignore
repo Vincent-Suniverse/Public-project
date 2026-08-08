@@ -16,3 +16,11 @@ venv/
 .ruff_cache/
 .pytest_cache/
 .mypy_cache/
+
+# Obsidian vault builder
+obsidian-vault-builder/input/*.zip
+obsidian-vault-builder/input/*_extracted/
+obsidian-vault-builder/input/.progress.json
+369Framework/.obsidian/workspace.json
+369Framework/.obsidian/workspace-mobile.json
+369Framework/.obsidian/plugins/

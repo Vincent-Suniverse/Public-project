@@ -1,0 +1,31 @@
+deepseek:
+  api_url: "https://api.deepseek.com/v1/chat/completions"
+  model: "deepseek-chat"
+  max_tokens: 1024
+  temperature: 0.3
+  batch_size: 5
+  rate_limit_pause: 1.5
+  max_retries: 3
+
+vault:
+  root: "../369Framework"
+  structure:
+    chats_claude: "Archive-Analysen/Claude"
+    chats_deepseek: "Archive-Analysen/DeepSeek"
+    concepts: "Konzepte"
+    themes: "Themen"
+    projects: "Projekte"
+    experiments: "Experimente-Bestätigungssuche"
+    theories: "Theorienentwicklung-Ideen"
+    templates: "Templates"
+
+input:
+  claude_zip: "input/claude_chats.zip"
+  deepseek_zip: "input/deepseek_chats.zip"
+
+processing:
+  min_message_length: 50
+  min_messages_per_chat: 2
+  max_content_for_analysis: 8000
+  progress_file: "input/.progress.json"
+  skip_analyzed: true
