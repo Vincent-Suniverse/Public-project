@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1231,
+    "total_transmissions": 1232,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-08-13"
@@ -22536,6 +22536,24 @@
       "type": "single",
       "date": "2026-08-13",
       "time_msk": "11:32",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "99356"
+      ],
+      "words": [
+        "ЗВУКОШНЕК"
+      ],
+      "target_blocks": [
+        "7433 8982"
+      ],
+      "type": "single",
+      "date": "2026-08-13",
+      "time_msk": "12:36",
       "notes": ""
     }
   ]
