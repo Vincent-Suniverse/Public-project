@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1235,
+    "total_transmissions": 1236,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-08-17"
+      "end": "2026-08-20"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -22608,6 +22608,26 @@
       "type": "single",
       "date": "2026-08-17",
       "time_msk": "12:48",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "84162"
+      ],
+      "words": [
+        "ПЕРЕШИБ",
+        "БЛИЖАЙШИЙ"
+      ],
+      "target_blocks": [
+        "6584 8032",
+        "8288 7311"
+      ],
+      "type": "double",
+      "date": "2026-08-20",
+      "time_msk": "11:12",
       "notes": ""
     }
   ]
