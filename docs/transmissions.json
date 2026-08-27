@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1242,
+    "total_transmissions": 1252,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-08-27"
@@ -22740,6 +22740,190 @@
       "type": "double",
       "date": "2026-08-27",
       "time_msk": "12:30",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "75909"
+      ],
+      "words": [
+        "ВВОЗОРУЛЬ"
+      ],
+      "target_blocks": [
+        "2414 2408"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "12:56",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "30076"
+      ],
+      "words": [
+        "СТЫКОДУСТ"
+      ],
+      "target_blocks": [
+        "1754 4162"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "13:18",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "11278"
+      ],
+      "words": [
+        "СКИПОКРАТ"
+      ],
+      "target_blocks": [
+        "1184 2608"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "13:50",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "02625"
+      ],
+      "words": [
+        "ЛЮКОПЛЮЩ"
+      ],
+      "target_blocks": [
+        "4417 1864"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "14:31",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "32235"
+      ],
+      "words": [
+        "ЛЕСОХВАТ"
+      ],
+      "target_blocks": [
+        "6332 2708"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "14:54",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "84805"
+      ],
+      "words": [
+        "КОРОНАРНЫЙ"
+      ],
+      "target_blocks": [
+        "5141 1235"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "15:45",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "63167"
+      ],
+      "words": [
+        "АФГАНЕЦ",
+        "МОХОРЕЙС"
+      ],
+      "target_blocks": [
+        "0010 5528",
+        "5613 2335"
+      ],
+      "type": "double",
+      "date": "2026-08-27",
+      "time_msk": "16:26",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "ЦЖАП"
+      ],
+      "command_blocks": [
+        "18228"
+      ],
+      "words": [
+        "ПРОПИТАНИЕ",
+        "МЕХАНИЧЕСКИЙ"
+      ],
+      "target_blocks": [
+        "0010 9164",
+        "5201 2227"
+      ],
+      "type": "double",
+      "date": "2026-08-27",
+      "time_msk": "16:30",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "83935"
+      ],
+      "words": [
+        "РАСПЫЛЕНЬЕ"
+      ],
+      "target_blocks": [
+        "1359 8888"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "16:34",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "85048"
+      ],
+      "words": [
+        "ОБЛИТЕРАЦИЯ"
+      ],
+      "target_blocks": [
+        "2054 5112"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "17:09",
       "notes": ""
     }
   ]
