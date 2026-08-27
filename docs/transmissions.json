@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1238,
+    "total_transmissions": 1242,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-08-20"
+      "end": "2026-08-27"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -22664,6 +22664,82 @@
       "type": "single",
       "date": "2026-08-20",
       "time_msk": "17:20",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "57242"
+      ],
+      "words": [
+        "ИЗОФЕРМЕНТ"
+      ],
+      "target_blocks": [
+        "5685 5479"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "10:52",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "28515"
+      ],
+      "words": [
+        "ПРЕГРЕШЕНИЕ",
+        "КУРОЧКА"
+      ],
+      "target_blocks": [
+        "6947 1934",
+        "9735 5804"
+      ],
+      "type": "double",
+      "date": "2026-08-27",
+      "time_msk": "11:08",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "86830"
+      ],
+      "words": [
+        "РЕКОРД"
+      ],
+      "target_blocks": [
+        "0604 1108"
+      ],
+      "type": "single",
+      "date": "2026-08-27",
+      "time_msk": "11:37",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "00630"
+      ],
+      "words": [
+        "ВЫЕМОВАЛ",
+        "ДУШЕГУБ"
+      ],
+      "target_blocks": [
+        "3919 8278",
+        "2529 8283"
+      ],
+      "type": "double",
+      "date": "2026-08-27",
+      "time_msk": "12:30",
       "notes": ""
     }
   ]
