@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1258,
+    "total_transmissions": 1259,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-09-07"
@@ -23034,6 +23034,26 @@
       "type": "single",
       "date": "2026-09-07",
       "time_msk": "12:26",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "26321"
+      ],
+      "words": [
+        "БЛАГОВЕСТ",
+        "АНОДОЛЮЭС"
+      ],
+      "target_blocks": [
+        "6674 6172",
+        "8538 6728"
+      ],
+      "type": "double",
+      "date": "2026-09-07",
+      "time_msk": "16:36",
       "notes": ""
     }
   ]
