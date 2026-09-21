@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1260,
+    "total_transmissions": 1261,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-09-21"
@@ -23072,6 +23072,24 @@
       "type": "single",
       "date": "2026-09-21",
       "time_msk": "18:33",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "61087"
+      ],
+      "words": [
+        "РАБОКРИЗ"
+      ],
+      "target_blocks": [
+        "3267 1868"
+      ],
+      "type": "single",
+      "date": "2026-09-21",
+      "time_msk": "20:24",
       "notes": ""
     }
   ]
