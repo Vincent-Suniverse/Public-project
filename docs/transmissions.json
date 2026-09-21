@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1259,
+    "total_transmissions": 1260,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-09-07"
+      "end": "2026-09-21"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23054,6 +23054,24 @@
       "type": "double",
       "date": "2026-09-07",
       "time_msk": "16:36",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "76146"
+      ],
+      "words": [
+        "ДАМПОЛЯД"
+      ],
+      "target_blocks": [
+        "8138 4105"
+      ],
+      "type": "single",
+      "date": "2026-09-21",
+      "time_msk": "18:33",
       "notes": ""
     }
   ]
