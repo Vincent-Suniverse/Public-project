@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1262,
+    "total_transmissions": 1269,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-09-23"
+      "end": "2026-09-24"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23108,6 +23108,144 @@
       "type": "single",
       "date": "2026-09-23",
       "time_msk": "17:33",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "69008"
+      ],
+      "words": [
+        "МЕШКОВИДНЫЙ"
+      ],
+      "target_blocks": [
+        "4233 7856"
+      ],
+      "type": "single",
+      "date": "2026-09-24",
+      "time_msk": "12:20",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "51235"
+      ],
+      "words": [
+        "ТИКАНЬЕ",
+        "СУЧИЛЬНЫЙ",
+        "УРОКОБЕЙ"
+      ],
+      "target_blocks": [
+        "4726 4103",
+        "4564 1608",
+        "4892 5362"
+      ],
+      "type": "triple",
+      "date": "2026-09-24",
+      "time_msk": "12:55",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "80390"
+      ],
+      "words": [
+        "РОКОХОД",
+        "ДЮЖИННЫЙ",
+        "СТЕПОФЕТР"
+      ],
+      "target_blocks": [
+        "8138 2860",
+        "9384 6823",
+        "9114 0297"
+      ],
+      "type": "triple",
+      "date": "2026-09-24",
+      "time_msk": "14:22",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "86433"
+      ],
+      "words": [
+        "ОБЕТОШТАБ"
+      ],
+      "target_blocks": [
+        "5554 1730"
+      ],
+      "type": "single",
+      "date": "2026-09-24",
+      "time_msk": "14:57",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "88109"
+      ],
+      "words": [
+        "БЛИЦОГРАД",
+        "КРИПОКАИР",
+        "КОБОБАУЛ"
+      ],
+      "target_blocks": [
+        "2765 3412",
+        "3449 5582",
+        "7719 4842"
+      ],
+      "type": "triple",
+      "date": "2026-09-24",
+      "time_msk": "15:56",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "42213"
+      ],
+      "words": [
+        "ДОТОБОБ"
+      ],
+      "target_blocks": [
+        "1340 7223"
+      ],
+      "type": "single",
+      "date": "2026-09-24",
+      "time_msk": "16:23",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "81024"
+      ],
+      "words": [
+        "РЕЗЬБОВОЙ"
+      ],
+      "target_blocks": [
+        "8394 7873"
+      ],
+      "type": "single",
+      "date": "2026-09-24",
+      "time_msk": "16:42",
       "notes": ""
     }
   ]
