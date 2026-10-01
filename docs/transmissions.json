@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1271,
+    "total_transmissions": 1273,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-09-28"
+      "end": "2026-10-01"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23282,6 +23282,42 @@
       "type": "single",
       "date": "2026-09-28",
       "time_msk": "07:08",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "45320"
+      ],
+      "words": [
+        "БАЛЕТОМАНКА"
+      ],
+      "target_blocks": [
+        "9064 6939"
+      ],
+      "type": "single",
+      "date": "2026-10-01",
+      "time_msk": "07:12",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "44103"
+      ],
+      "words": [
+        "АРОБЕРН"
+      ],
+      "target_blocks": [
+        "1203 5221"
+      ],
+      "type": "single",
+      "date": "2026-10-01",
+      "time_msk": "07:15",
       "notes": ""
     }
   ]
