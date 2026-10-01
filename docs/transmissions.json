@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1273,
+    "total_transmissions": 1274,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-10-01"
@@ -23318,6 +23318,24 @@
       "type": "single",
       "date": "2026-10-01",
       "time_msk": "07:15",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "55968"
+      ],
+      "words": [
+        "КРИТЕРИЙ"
+      ],
+      "target_blocks": [
+        "6855 6414"
+      ],
+      "type": "single",
+      "date": "2026-10-01",
+      "time_msk": "17:26",
       "notes": ""
     }
   ]
