@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1274,
+    "total_transmissions": 1276,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-10-01"
+      "end": "2026-10-02"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23336,6 +23336,42 @@
       "type": "single",
       "date": "2026-10-01",
       "time_msk": "17:26",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "68372"
+      ],
+      "words": [
+        "АКУШЕРКА"
+      ],
+      "target_blocks": [
+        "1172 2408"
+      ],
+      "type": "single",
+      "date": "2026-10-02",
+      "time_msk": "10:50",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "44521"
+      ],
+      "words": [
+        "МЕТИЛЕНОВЫЙ"
+      ],
+      "target_blocks": [
+        "4638 1726"
+      ],
+      "type": "single",
+      "date": "2026-10-02",
+      "time_msk": "11:21",
       "notes": ""
     }
   ]
