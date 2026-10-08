@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1281,
+    "total_transmissions": 1288,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-10-07"
+      "end": "2026-10-08"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23462,6 +23462,144 @@
       "type": "single",
       "date": "2026-10-07",
       "time_msk": "20:36",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "62101"
+      ],
+      "words": [
+        "КОЛЕР"
+      ],
+      "target_blocks": [
+        "5291 8888"
+      ],
+      "type": "single",
+      "date": "2026-10-08",
+      "time_msk": "12:11",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "78230"
+      ],
+      "words": [
+        "ОБЗОР",
+        "ИЗЪЯТИЕ",
+        "ЦЕНЗОДОЛЛ"
+      ],
+      "target_blocks": [
+        "0909 4948",
+        "7726 3201",
+        "8664 4343"
+      ],
+      "type": "triple",
+      "date": "2026-10-08",
+      "time_msk": "12:24",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "23139"
+      ],
+      "words": [
+        "ЛОТОНАНТ",
+        "СЧЕТОСПОР",
+        "КРАСНОЩЕКИЙ"
+      ],
+      "target_blocks": [
+        "2181 9162",
+        "6563 4935",
+        "8060 0174"
+      ],
+      "type": "triple",
+      "date": "2026-10-08",
+      "time_msk": "14:18",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "75974"
+      ],
+      "words": [
+        "ПЕКОМРАК"
+      ],
+      "target_blocks": [
+        "5109 7929"
+      ],
+      "type": "single",
+      "date": "2026-10-08",
+      "time_msk": "14:21",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "83167"
+      ],
+      "words": [
+        "ДВОРОХРЯЩ",
+        "ТАКЕЛАЖНЫЙ",
+        "БОБОВНУК"
+      ],
+      "target_blocks": [
+        "7813 5427",
+        "0698 5020",
+        "5812 4860"
+      ],
+      "type": "triple",
+      "date": "2026-10-08",
+      "time_msk": "15:44",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "37513"
+      ],
+      "words": [
+        "КОДОБЕРН"
+      ],
+      "target_blocks": [
+        "0216 5516"
+      ],
+      "type": "single",
+      "date": "2026-10-08",
+      "time_msk": "16:21",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "11718"
+      ],
+      "words": [
+        "МОТИВАЦИЯ"
+      ],
+      "target_blocks": [
+        "9089 7726"
+      ],
+      "type": "single",
+      "date": "2026-10-08",
+      "time_msk": "16:39",
       "notes": ""
     }
   ]
