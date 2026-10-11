@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1290,
+    "total_transmissions": 1292,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-10-09"
+      "end": "2026-10-11"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23636,6 +23636,42 @@
       "type": "single",
       "date": "2026-10-09",
       "time_msk": "17:05",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "62070"
+      ],
+      "words": [
+        "БЛИЦОТИП"
+      ],
+      "target_blocks": [
+        "8186 3319"
+      ],
+      "type": "single",
+      "date": "2026-10-11",
+      "time_msk": "15:41",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "24943"
+      ],
+      "words": [
+        "БЛОКОПУСК"
+      ],
+      "target_blocks": [
+        "7362 6129"
+      ],
+      "type": "single",
+      "date": "2026-10-11",
+      "time_msk": "17:25",
       "notes": ""
     }
   ]
