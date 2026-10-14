@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1294,
+    "total_transmissions": 1295,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-10-14"
@@ -23710,6 +23710,24 @@
       "type": "double",
       "date": "2026-10-14",
       "time_msk": "15:28",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "35641"
+      ],
+      "words": [
+        "ИШИКТОН"
+      ],
+      "target_blocks": [
+        "3365 8041"
+      ],
+      "type": "single",
+      "date": "2026-10-14",
+      "time_msk": "18:39",
       "notes": ""
     }
   ]
