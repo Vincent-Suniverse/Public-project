@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1295,
+    "total_transmissions": 1299,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-10-14"
+      "end": "2026-10-15"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23728,6 +23728,82 @@
       "type": "single",
       "date": "2026-10-14",
       "time_msk": "18:39",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "21222"
+      ],
+      "words": [
+        "МНЕМОСХЕМА",
+        "ХРУПОТКАЧ"
+      ],
+      "target_blocks": [
+        "1180 4865",
+        "6995 1729"
+      ],
+      "type": "double",
+      "date": "2026-10-15",
+      "time_msk": "13:24",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "02095"
+      ],
+      "words": [
+        "СУЛЬФОСОЛЬ"
+      ],
+      "target_blocks": [
+        "0577 5367"
+      ],
+      "type": "single",
+      "date": "2026-10-15",
+      "time_msk": "13:49",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "29625"
+      ],
+      "words": [
+        "НОКДАУН",
+        "РОГОЖА"
+      ],
+      "target_blocks": [
+        "2567 1173",
+        "0941 0368"
+      ],
+      "type": "double",
+      "date": "2026-10-15",
+      "time_msk": "14:41",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "70382"
+      ],
+      "words": [
+        "ФИКЦИЯ"
+      ],
+      "target_blocks": [
+        "9703 0657"
+      ],
+      "type": "single",
+      "date": "2026-10-15",
+      "time_msk": "18:28",
       "notes": ""
     }
   ]
