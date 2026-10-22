@@ -23097,6 +23097,24 @@
         "НЖТИ"
       ],
       "command_blocks": [
+        "06529"
+      ],
+      "words": [
+        "РАБОЧИП"
+      ],
+      "target_blocks": [
+        "4097 5573"
+      ],
+      "type": "single",
+      "date": "2026-09-23",
+      "time_msk": "15:56",
+      "notes": "nachgetragen 2026-10-16 aus Kanaltext im DeepSeek-Chat"
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
         "28555"
       ],
       "words": [
@@ -23543,6 +23561,24 @@
       "date": "2026-10-08",
       "time_msk": "14:21",
       "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "86603"
+      ],
+      "words": [
+        "КОЛОТЫЙ"
+      ],
+      "target_blocks": [
+        "8316 9800"
+      ],
+      "type": "single",
+      "date": "2026-10-08",
+      "time_msk": "14:30",
+      "notes": "nachgetragen 2026-10-16 aus Kanaltext im DeepSeek-Chat"
     },
     {
       "callsigns": [
