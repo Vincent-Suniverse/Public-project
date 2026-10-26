@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1306,
+    "total_transmissions": 1310,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-10-22"
+      "end": "2026-10-26"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -23930,6 +23930,78 @@
       "type": "single",
       "date": "2026-10-22",
       "time_msk": "14:14",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "98280"
+      ],
+      "words": [
+        "БОЕВОСБОЙ"
+      ],
+      "target_blocks": [
+        "5674 9943"
+      ],
+      "type": "single",
+      "date": "2026-10-26",
+      "time_msk": "12:36",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "22704"
+      ],
+      "words": [
+        "АРОПОД"
+      ],
+      "target_blocks": [
+        "8414 9247"
+      ],
+      "type": "single",
+      "date": "2026-10-26",
+      "time_msk": "14:21",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "99891"
+      ],
+      "words": [
+        "АМАДРИЛЛ"
+      ],
+      "target_blocks": [
+        "8539 0054"
+      ],
+      "type": "single",
+      "date": "2026-10-26",
+      "time_msk": "15:33",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "50962"
+      ],
+      "words": [
+        "РЕВОНОРД"
+      ],
+      "target_blocks": [
+        "8592 8891"
+      ],
+      "type": "single",
+      "date": "2026-10-26",
+      "time_msk": "16:19",
       "notes": ""
     }
   ]
