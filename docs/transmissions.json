@@ -2,7 +2,7 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1312,
+    "total_transmissions": 1314,
     "date_range": {
       "start": "2020-01-02",
       "end": "2026-11-05"
@@ -24038,6 +24038,42 @@
       "type": "single",
       "date": "2026-11-05",
       "time_msk": "11:15",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "42005"
+      ],
+      "words": [
+        "МИЛЯ"
+      ],
+      "target_blocks": [
+        "5351 5627"
+      ],
+      "type": "single",
+      "date": "2026-11-05",
+      "time_msk": "11:32",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "25828"
+      ],
+      "words": [
+        "БРОНТОЗАВР"
+      ],
+      "target_blocks": [
+        "8526 1223"
+      ],
+      "type": "single",
+      "date": "2026-11-05",
+      "time_msk": "19:09",
       "notes": ""
     }
   ]
