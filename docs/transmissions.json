@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1315,
+    "total_transmissions": 1318,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-11-05"
+      "end": "2026-11-09"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -24092,6 +24092,60 @@
       "type": "single",
       "date": "2026-11-05",
       "time_msk": "20:04",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "05030"
+      ],
+      "words": [
+        "ЗЛОСЛОВЬЕ"
+      ],
+      "target_blocks": [
+        "6979 9692"
+      ],
+      "type": "single",
+      "date": "2026-11-09",
+      "time_msk": "11:42",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "56111"
+      ],
+      "words": [
+        "КВАСОСТОЛ"
+      ],
+      "target_blocks": [
+        "8971 0680"
+      ],
+      "type": "single",
+      "date": "2026-11-09",
+      "time_msk": "13:52",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "39523"
+      ],
+      "words": [
+        "СМАКОБОЛ"
+      ],
+      "target_blocks": [
+        "4520 9365"
+      ],
+      "type": "single",
+      "date": "2026-11-09",
+      "time_msk": "14:25",
       "notes": ""
     }
   ]
