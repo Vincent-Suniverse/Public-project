@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1318,
+    "total_transmissions": 1322,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-11-09"
+      "end": "2026-11-12"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -24146,6 +24146,78 @@
       "type": "single",
       "date": "2026-11-09",
       "time_msk": "14:25",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "83816"
+      ],
+      "words": [
+        "БЕСОСПОР"
+      ],
+      "target_blocks": [
+        "6990 2692"
+      ],
+      "type": "single",
+      "date": "2026-11-12",
+      "time_msk": "12:53",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "19551"
+      ],
+      "words": [
+        "БЕНЗОВОЗ"
+      ],
+      "target_blocks": [
+        "5598 3346"
+      ],
+      "type": "single",
+      "date": "2026-11-12",
+      "time_msk": "14:10",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "66082"
+      ],
+      "words": [
+        "ЛЕДОЗАЛП"
+      ],
+      "target_blocks": [
+        "9261 3472"
+      ],
+      "type": "single",
+      "date": "2026-11-12",
+      "time_msk": "15:45",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "48308"
+      ],
+      "words": [
+        "АНДАНТЕ"
+      ],
+      "target_blocks": [
+        "4358 6496"
+      ],
+      "type": "single",
+      "date": "2026-11-12",
+      "time_msk": "17:22",
       "notes": ""
     }
   ]
