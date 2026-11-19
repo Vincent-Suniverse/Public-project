@@ -2,10 +2,10 @@
   "meta": {
     "title": "UVB-76 Transmission Database",
     "description": "Documented UVB-76 voice transmissions (2020-2026)",
-    "total_transmissions": 1324,
+    "total_transmissions": 1328,
     "date_range": {
       "start": "2020-01-02",
-      "end": "2026-11-16"
+      "end": "2026-11-19"
     },
     "sources": [
       "Priyom.org Archive (2020-2024)",
@@ -24254,6 +24254,78 @@
       "type": "single",
       "date": "2026-11-16",
       "time_msk": "17:11",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "39453"
+      ],
+      "words": [
+        "ГРЕХОВОДНИК"
+      ],
+      "target_blocks": [
+        "3254 4627"
+      ],
+      "type": "single",
+      "date": "2026-11-19",
+      "time_msk": "10:56",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "03819"
+      ],
+      "words": [
+        "ИНТЕРВЕНТ"
+      ],
+      "target_blocks": [
+        "5604 1639"
+      ],
+      "type": "single",
+      "date": "2026-11-19",
+      "time_msk": "11:32",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "57566"
+      ],
+      "words": [
+        "ГОРНОНАСТ"
+      ],
+      "target_blocks": [
+        "9967 4619"
+      ],
+      "type": "single",
+      "date": "2026-11-19",
+      "time_msk": "13:04",
+      "notes": ""
+    },
+    {
+      "callsigns": [
+        "НЖТИ"
+      ],
+      "command_blocks": [
+        "38105"
+      ],
+      "words": [
+        "КОРОВУШКА"
+      ],
+      "target_blocks": [
+        "6032 6012"
+      ],
+      "type": "single",
+      "date": "2026-11-19",
+      "time_msk": "18:28",
       "notes": ""
     }
   ]
